@@ -1,0 +1,28 @@
+<h1>Свежий номер</h1>
+
+<table>
+  <tr>
+    <th>Заголовок</th>
+    <th>Рубрика</th>
+    <th>Дата</th>
+    <th>Содержание статьи</th>
+    <th>Ссылка на картинку</th>
+  </tr>
+
+<% @articles.each do |article| %>
+  <tr>
+    <td><%=h article.title %></td>
+    <td><%=h article.column %></td>
+    <td><%=h article.date %></td>
+    <td><%=h article.content %></td>
+    <td><%=h article.image_url %></td>
+    <td><%= link_to 'Просмотр', article %></td>
+    <td><%= link_to 'Рeдактировать', edit_article_path(article) %></td>
+    <td><%= link_to 'Удалить', article, :confirm => 'Вы уверены?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Добавить статью', new_article_path %>
